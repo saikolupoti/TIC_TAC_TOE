@@ -111,36 +111,13 @@
             color: #fff;
             background-color: rgba(70, 70, 70, 0.8);
         }
-        button.theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            font-weight: bold;
-            color: #fff;
-            background-color: #ff4081;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.2s;
-        }
-
-        button.theme-toggle:hover {
-            background-color: #e73370;
-            transform: scale(1.1);
-        }
-
         body.dark button.theme-toggle {
             background-color: #4CAF50;
             color: #fff;
         }
-
         body.dark button.theme-toggle:hover {
             background-color: #45a049;
         }
-
         button.reset {
             margin-top: 20px;
             padding: 10px 20px;
@@ -154,16 +131,13 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, transform 0.2s;
         }
-
         button.reset:hover {
             background-color: #e65c5c;
             transform: scale(1.1);
         }
-
         body.dark button.reset {
             background-color: #607D8B;
         }
-
         body.dark button.reset:hover {
             background-color: #546E7A;
         }
@@ -206,6 +180,8 @@
             }
 
             board[row][col] = player === 1 ? 'X' : 'O';
+            createBoard(); // Ensure the move is displayed immediately.
+
             if (checkWinner()) {
                 winnerElement.textContent = `Player ${player} wins!`;
                 disableBoard();
@@ -216,7 +192,6 @@
             }
 
             player = player === 1 ? 2 : 1;
-            createBoard();
         }
 
         function checkWinner() {
@@ -264,10 +239,8 @@
         function toggleTheme() {
             document.body.classList.toggle('dark');
         }
+
         createBoard();
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-        }
     </script>
 </body>
 </html>
